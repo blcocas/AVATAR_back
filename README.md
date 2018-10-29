@@ -1,3 +1,3 @@
 # avatar_back
-## $ npm install
-## $ npm start
+### $ npm install
+### $ npm start
