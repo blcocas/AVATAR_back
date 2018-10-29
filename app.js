@@ -59,17 +59,6 @@ conn.query(sql, function(err, rows, fields){
   }
 })
 /*
-
-
-var sql = 'insert into student values(201354243,"LEE YONGJAE",4)';
-conn.query(sql,function(err,rows,fields){
-  if(err)
-    console.log(err);
-  else{
-    console.log(rows.insertId);
-  }
-})
-
 var sql = 'insert into student values(?,?,?)';
 var params = [201224322,'PARK SENGHYUN',2];
 conn.query(sql,params,function(err,rows,fields){
@@ -80,6 +69,7 @@ conn.query(sql,params,function(err,rows,fields){
     console.log(rows.insertId);
   }
 })
+
 var sql = 'update student set name=?, class=? where id=?';
 var params = ['SUPERHONGJAE',99,201221027];
 conn.query(sql,params,function(err,rows,fields){
@@ -89,9 +79,6 @@ conn.query(sql,params,function(err,rows,fields){
     console.log(rows);
   }
 })
-
-
-
 */
 conn.end();
 // error handler
