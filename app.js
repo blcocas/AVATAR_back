@@ -28,17 +28,7 @@ app.use(function(req, res, next) {
 });
 
 //mysql--------------------------------------
-const mysql = require('mysql');
-var conn = mysql.createConnection({
-  host : 'avatar.cxaktgbldso1.ap-northeast-2.rds.amazonaws.com',
-  user : 'avatar',
-  password : 'ghdwo966',
-  database : 'avatar'
-});
-conn.connect(function(err){
-  if (err) throw err;
-  console.log('mysql successful!')
-});
+
 
 // var sql = 'insert into test values(201354243,"LEE YONGJAE")';
 // conn.query(sql,function(err,rows,fields){
@@ -49,15 +39,6 @@ conn.connect(function(err){
 //   }
 // })
 
-var sql = 'select * from test';
-conn.query(sql, function(err, rows, fields){
-  if (err) throw err;
-  else{
-    for(var i=0;i<rows.length;i++){
-      console.log(rows[i].name + " : " + rows[i].pid);
-    }
-  }
-})
 /*
 var sql = 'insert into student values(?,?,?)';
 var params = [201224322,'PARK SENGHYUN',2];
@@ -80,7 +61,7 @@ conn.query(sql,params,function(err,rows,fields){
   }
 })
 */
-conn.end();
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
