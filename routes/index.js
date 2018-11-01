@@ -29,7 +29,7 @@ router.post('/signup',function(req,res){
 //signup('이홍재','01086175766','남','hongss94','dkqkxk');
 //signup('이현재','01086175764','남','hongss92','dkqkxk');
 signin('hongss94','dkqkxk');
-//회원가입 함수
+//회원가입 함수 person : name,phone,sex / blind : id,pass
 function signup(name,phone,sex,id,pass){
   let sql_1 = 'insert into person (name,phone,sex) values(?,?,?)';
   let sql_2 = 'insert into blind (user_id,user_pass,p_id) values(?,?,?)'
