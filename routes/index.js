@@ -10,7 +10,7 @@ var conn = mysql.createConnection({
 });
 conn.connect(function(err){
   if (err) throw err;
-  console.log('mysql successful!')
+  console.log('mysql connect ok!')
 });
 
 /* route. */
@@ -26,10 +26,11 @@ router.post('/signup',function(req,res){
 })
 
 
-insert_id('이홍재','01086175766','남','hongss94','dkqkxk');
-insert_id('이현재','01086175764','남','hongss92','dkqkxk');
-
-function insert_id(name,phone,sex,id,pass){
+//signup('이홍재','01086175766','남','hongss94','dkqkxk');
+//signup('이현재','01086175764','남','hongss92','dkqkxk');
+signin('hongss94','dkqkxk');
+//회원가입 함수
+function signup(name,phone,sex,id,pass){
   let sql_1 = 'insert into person (name,phone,sex) values(?,?,?)';
   let sql_2 = 'insert into blind (user_id,user_pass,p_id) values(?,?,?)'
   conn.query(sql_1,[name,phone,sex],function(err,rows,table){
@@ -45,5 +46,33 @@ function insert_id(name,phone,sex,id,pass){
       }
   })
 }
+//로그인 함수
+function signin(id,pass){
+  let sql = 'select * from blind where user_id = ?';
+  conn.query(sql,id,function(err,rows,fields){
+    if(err) throw err;
+    else{
+      let id_db = rows[0].user_id;
+      let pass_db = rows[0].user_pass;
+      //console.log(id_db, pass_db);
+      if(id == id_db && pass == pass_db)
+        console.log('login ok!');
+      else
+        console.log('login fail!');
+    }
+  })
+}
+
+
+// var sql = 'select * from student';
+// conn.query(sql, function(err, rows, fields){
+//   if (err) throw err;
+//   else{
+//     for(var i=0;i<rows.length;i++){
+//       console.log(rows[i].name);
+//     }
+//   }
+// })
+
 
 module.exports = router;
